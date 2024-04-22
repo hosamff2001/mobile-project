@@ -1,5 +1,7 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../../../../core/utliz/assets.dart';
 import '../../../../../core/utliz/stayles.dart';
@@ -20,23 +22,22 @@ class LogoWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            Assets.imageLogo,
-            fit: BoxFit.cover,
-          ),
-          const SizedBox(
-            width: 10,
-          ),
           Expanded(
             child: Column(
               children: [
-                Image.asset(
-                  Assets.imageLogoname,
-                  fit: BoxFit.fill,
+                Expanded(
+                  flex: 5,
+                  child: Image.asset(
+                    Assets.imageLogoname,
+                    fit: BoxFit.fill,
+                  ),
                 ),
-                Text(
-                  "online groceries",
-                  style: Styles.textStyle14,
+                Expanded(
+                  flex: 1,
+                  child: Text(
+                    "online groceries",
+                    style: Styles.textStyle14,
+                  ),
                 ),
               ],
             ),

@@ -13,7 +13,7 @@ class DetailsHeader extends StatelessWidget {
           child: SizedBox(
             height: MediaQuery.sizeOf(context).height * 0.05,
             child: Image.asset(
-              Assets.imageLogo,
+              Assets.imageLogoname,
               color: Colors.black,
             ),
           ),

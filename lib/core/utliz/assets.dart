@@ -1,9 +1,7 @@
 class Assets {
   Assets._();
   
-  /// Assets for imageLogo
-  /// assets/image/logo.png
-  static const String imageLogo = "assets/image/logo.png";
+
 
   /// Assets for imageLogoname
   /// assets/image/logoname.png

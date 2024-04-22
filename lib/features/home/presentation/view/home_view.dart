@@ -12,16 +12,19 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-            floatingActionButton: const FloatActionButton(),
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerDocked,
-            bottomNavigationBar: const BottomNavigatButtons(),
-            backgroundColor: ColorManager.white,
-            body: BlocBuilder<MainMangerCubit, MainMangerState>(
-                builder: (context, state) {
-              return MainMangerCubit.getobject(context)
-                  .screens[MainMangerCubit.getobject(context).activeIndex];
-            })));
+      child: Scaffold(
+        floatingActionButton: const FloatActionButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: const BottomNavigatButtons(),
+        backgroundColor: ColorManager.white,
+        body: BlocBuilder<MainMangerCubit, MainMangerState>(
+          builder: (context, state) {
+
+            return MainMangerCubit.getobject(context)
+                .screens[MainMangerCubit.getobject(context).activeIndex];
+          },
+        ),
+      ),
+    );
   }
 }

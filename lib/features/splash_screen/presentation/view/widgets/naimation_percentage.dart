@@ -17,17 +17,26 @@ class AnimationPercentage extends StatelessWidget {
       builder: (context, child) {
         return Column(
           children: [
-            Text(
-              "${(_progressAnimation.value * 100).toInt()}%",
-              style: Styles.textStyle14,
+            Expanded(
+              flex: 4,
+              child: Text(
+                "${(_progressAnimation.value * 100).toInt()}%",
+                style: Styles.textStyle14.copyWith(
+                  color: Colors.black,
+                
+                ),
+              ),
             ),
             const SizedBox(
               height: 16,
             ),
-            CircularProgressIndicator(
-              value: _progressAnimation.value,
-              color: Colors.white,
-              strokeWidth: 8.0,
+            Expanded(
+              flex: 9,
+              child: CircularProgressIndicator(
+                value: _progressAnimation.value,
+                color: Colors.black,
+                strokeWidth: 8.0,
+              ),
             ),
           ],
         );

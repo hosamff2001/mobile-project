@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:appnest/features/exploar/presentation/view/exploar_view.dart';
 import 'package:appnest/features/favourite/presentation/view/favourite_view.dart';
-import 'package:appnest/features/home/data/dumy_data.dart';
+import 'package:appnest/features/home/data/producats_model.dart';
+import 'package:appnest/features/home/data/repo/product_repo_imple.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,6 +14,8 @@ part 'main_manger_state.dart';
 
 class MainMangerCubit extends Cubit<MainMangerState> {
   MainMangerCubit() : super(MainMangerInitial());
+
+  ProductRepoImplentation productRepoImplentation = ProductRepoImplentation();
   int activeIndex = 0;
   static getobject(BuildContext context) =>
       BlocProvider.of<MainMangerCubit>(context);
@@ -55,8 +58,26 @@ class MainMangerCubit extends Cubit<MainMangerState> {
         }
       }
       cartlist.add(selectproducat);
-      
+
       emit(AddToCart());
     }
+  }
+
+  List<Producats> product = [];
+  getproduct() {
+    emit(GetProductLoading());
+    productRepoImplentation.getAllProducts().then((value) {
+      value.fold((l) {
+        emit(GetProductError(l.errorMessage));
+      }, (r) {
+        product = r;
+        emit(GetProductSuccess());
+      });
+    });
+  }
+
+  void removefromcart() {
+    cartlist.clear();
+    emit(RemoveFromCart());
   }
 }

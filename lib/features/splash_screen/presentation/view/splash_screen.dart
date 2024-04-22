@@ -54,9 +54,7 @@ class _SplashScreenState extends State<SplashScreen>
     _fadeController.forward();
     _progressController.forward();
 
-    _progressController.addStatusListener((status) {
-     
-    });
+    _progressController.addStatusListener((status) {});
   }
 
   @override
@@ -65,22 +63,28 @@ class _SplashScreenState extends State<SplashScreen>
       child: BlocConsumer<MainMangerCubit, MainMangerState>(
         listener: (context, state) {
           if (state is GoToHomeScreenState) {
-            GoRouter.of(context).go(MyRoute.kHomeView);
+            GoRouter.of(context).go(MyRoute.kOnBoradingScreen);
           }
         },
         builder: (context, state) {
           return Scaffold(
+            backgroundColor: Colors.white,
             body: Center(
               child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
                 height: MediaQuery.of(context).size.height * 0.3,
                 child: Column(
                   children: [
-                    LogoWidget(fadeAnimation: _fadeAnimation),
+                    Expanded(
+                        flex: 6,
+                        child: LogoWidget(fadeAnimation: _fadeAnimation,),),
                     const SizedBox(
                       height: 20,
                     ),
-                    AnimationPercentage(progressAnimation: _progressAnimation),
+                    Expanded(
+                        flex: 4,
+                        child: AnimationPercentage(
+                            progressAnimation: _progressAnimation)),
                   ],
                 ),
               ),
